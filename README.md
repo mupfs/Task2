@@ -4,6 +4,8 @@ This repository contains a Spring Boot REST API application developed as Task 2 
 
 The project demonstrates a complete backend REST application built using Spring Boot, following clean layered architecture, REST principles, proper exception handling, API documentation with Swagger, and database persistence using Spring Data JPA and H2.
 
+------
+
 📌 Task 2 – REST API with Spring Boot
 🎯 Objective
 
@@ -20,6 +22,8 @@ Implements centralized exception handling
 Documents APIs using Swagger / OpenAPI
 
 Persists data using Spring Data JPA and an H2 in-memory database
+
+-----
 
 🛠️ Technologies Used
 
@@ -41,6 +45,8 @@ Postman
 
 Hibernate
 
+-----
+
 🏗️ Application Architecture
 
 The application follows a layered architecture:
@@ -61,6 +67,8 @@ Mapper converts Entities ↔ DTOs
 
 Controller returns an HTTP response with appropriate status
 
+-----
+
 📡 REST API Endpoints
 Method	Endpoint	Description	HTTP Status
 POST	/api/v1/products	Create a new product	201 Created
@@ -68,6 +76,7 @@ GET	/api/v1/products/{id}	Get product by ID	200 OK
 GET	/api/v1/products	Get all products	200 OK
 PUT	/api/v1/products/{id}	Update product	200 OK
 DELETE	/api/v1/products/{id}	Delete product	204 No Content
+
 🧾 Example JSON Requests
 Create Product (POST)
 {
@@ -79,6 +88,8 @@ Update Product (PUT)
   "name": "MacBook"
 }
 
+-----
+
 ❗ Exception Handling
 
 Custom exception: ProductNotFoundException
@@ -89,6 +100,8 @@ Proper HTTP status codes returned (e.g. 404 NOT FOUND)
 
 Error responses wrapped in a structured ErrorMessageResponse
 
+-----
+
 📘 API Documentation (Swagger / OpenAPI)
 
 Swagger UI is enabled for interactive API documentation and testing.
@@ -98,6 +111,8 @@ http://localhost:8080/swagger-ui/index.html
 
 OpenAPI JSON:
 http://localhost:8080/v1/api-docs
+
+-----
 
 🗄️ Database Integration (H2 + JPA)
 
@@ -121,6 +136,8 @@ URL: http://localhost:8080/console
 
 JDBC URL: jdbc:h2:mem:testdb
 
+-----
+
 🧪 Testing
 
 The REST endpoints were tested using:
@@ -139,64 +156,7 @@ Valid and invalid input cases
 
 Exception handling for non-existing product IDs
 
-❓ Lecturer’s Question (Slide 63)
-Why does JpaRepository work without method implementations?
-
-The repository interface is defined as:
-
-public interface ProductRepository extends JpaRepository<Product, Long> {
-}
-
-
-Despite having no explicit method implementations, methods such as:
-
-save()
-
-findById()
-
-findAll()
-
-deleteById()
-
-work automatically.
-
-Explanation
-
-This behavior is provided by Spring Data JPA:
-
-JpaRepository is part of Spring Data JPA
-
-At runtime, Spring uses dynamic proxy generation and reflection
-
-Spring scans repository interfaces and generates concrete implementations
-
-Hibernate (as the JPA provider) translates method calls into SQL queries
-
-This follows the Inversion of Control (IoC) principle
-
-As a result:
-
-Developers define what they need (interfaces)
-
-Spring decides how it is implemented
-
-No manual repository implementation is required
-
-This mechanism keeps the codebase clean, readable, and easy to maintain.
-
-✅ Learning Outcomes (Task 2)
-
-Building REST APIs with Spring Boot
-
-Applying clean architecture principles
-
-Using DTOs and object mapping
-
-Handling exceptions properly
-
-Documenting APIs with Swagger
-
-Persisting data using Spring Data JPA and H2
+-----
 
 📌 Final Notes
 
